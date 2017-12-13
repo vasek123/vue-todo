@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <TodoList v-bind:todos="todos" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import TodoList from './components/TodoList';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    TodoList,
+  },
+  data() {
+    return {
+      todos: [
+        { id: 0, todo: 'Buy milk', isCompleted: true },
+        { id: 1, todo: 'Prepare lunch', isCompleted: false },
+      ],
+    };
   },
 };
 </script>

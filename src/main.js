@@ -5,6 +5,9 @@ import App from './App';
 
 Vue.config.productionTip = false;
 
+// Create the bus
+window.bus = new Vue();
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

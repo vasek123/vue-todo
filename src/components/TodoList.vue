@@ -1,7 +1,6 @@
 <template>
   <div class="todo-list">
-    <span>Number of active todos: {{ numberOfActiveTodos }}</span>
-    <Todo v-for="todo in todos" v-bind:key="todo.id" v-bind="todo"/>
+    <Todo v-for="todo in Object.values(todos)" :key="todo.id" :todo.sync="todo" />
   </div>  
 </template>
 
@@ -18,9 +17,15 @@ export default {
 
   computed: {
     numberOfActiveTodos() {
-      return this.todos.filter(todo => !todo.isCompleted).length;
+      return Object.values(this.todos).filter(todo => !todo.isCompleted).length;
     },
   },
+
+  methods: {
+    newTodo: function () {
+      this.$emit('todo-new');
+    }
+  }
 };
 </script>
 
